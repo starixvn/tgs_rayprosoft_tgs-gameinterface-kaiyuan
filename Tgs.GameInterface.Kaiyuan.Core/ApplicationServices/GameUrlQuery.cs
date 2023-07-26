@@ -1,0 +1,11 @@
+﻿namespace Tgs.GameInterface.Kaiyuan.Core.ApplicationServices;
+
+public record GameUrlQuery(
+    Uri ApiUrl,
+    string Deskey,
+    string MD5key,
+    string AgentId,
+    string BrandCode,
+    string PlayerCode,
+    string IpAddress,
+    string GameExternalID);

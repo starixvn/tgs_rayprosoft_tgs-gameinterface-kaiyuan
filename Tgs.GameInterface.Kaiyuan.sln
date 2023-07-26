@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.GameInterface.Kaiyuan", "Tgs.GameInterface.Kaiyuan\Tgs.GameInterface.Kaiyuan.csproj", "{4A0091ED-D13D-4445-9BA4-6DFE8BF4D29D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.GameInterface.Kaiyuan.Core", "Tgs.GameInterface.Kaiyuan.Core\Tgs.GameInterface.Kaiyuan.Core.csproj", "{6A49F812-B60A-432D-82CC-33BAB94CF0FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.GameInterface.Kaiyuan.Core.UnitTest", "Tgs.GameInterface.Kaiyuan.Core.UnitTest\Tgs.GameInterface.Kaiyuan.Core.UnitTest.csproj", "{747106C7-0FED-4F0F-80A2-10443EC4FC30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.GameInterface.Kaiyuan.Client", "Tgs.GameInterface.Kaiyuan.Client\Tgs.GameInterface.Kaiyuan.Client.csproj", "{C1845E7B-F521-4D23-BEEB-691FB7690610}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A0091ED-D13D-4445-9BA4-6DFE8BF4D29D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A0091ED-D13D-4445-9BA4-6DFE8BF4D29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A0091ED-D13D-4445-9BA4-6DFE8BF4D29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A0091ED-D13D-4445-9BA4-6DFE8BF4D29D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A49F812-B60A-432D-82CC-33BAB94CF0FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A49F812-B60A-432D-82CC-33BAB94CF0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A49F812-B60A-432D-82CC-33BAB94CF0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A49F812-B60A-432D-82CC-33BAB94CF0FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{747106C7-0FED-4F0F-80A2-10443EC4FC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747106C7-0FED-4F0F-80A2-10443EC4FC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747106C7-0FED-4F0F-80A2-10443EC4FC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747106C7-0FED-4F0F-80A2-10443EC4FC30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1845E7B-F521-4D23-BEEB-691FB7690610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1845E7B-F521-4D23-BEEB-691FB7690610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1845E7B-F521-4D23-BEEB-691FB7690610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1845E7B-F521-4D23-BEEB-691FB7690610}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF8B4274-DE03-47B2-8898-CD2583DC4A79}
+	EndGlobalSection
+EndGlobal
