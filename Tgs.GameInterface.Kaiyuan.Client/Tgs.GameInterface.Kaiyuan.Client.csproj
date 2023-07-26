@@ -4,6 +4,15 @@
 		<TargetFramework>net7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<Version>1.0.1</Version>
+		<Authors>Raypro</Authors>
+		<RootNamespace>Tgs.GameInterface.Kaiyuan.Client</RootNamespace>
+		<PackageId>Tgs.GameInterface.Kaiyuan.Client</PackageId>
+		<Title>Tgs.GameInterface.Kaiyuan.Client</Title>
+		<PackageProjectUrl>https://gitlab.com/rayprosoft/tgs-gameinterface-kaiyuan</PackageProjectUrl>
+		<RepositoryUrl>https://gitlab.com/rayprosoft/tgs-gameinterface-kaiyuan.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>Tgs GameInterface Kaiyuan Client</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
