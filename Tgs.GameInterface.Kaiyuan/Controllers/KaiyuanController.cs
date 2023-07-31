@@ -269,9 +269,9 @@ public class KaiyuanController : ControllerBase
             .ConfigureAwait(false);
 
         return new PlayerBalanceResultViewModel(
-            LockBalance: result.LockBalance,
+            Balance: result.Balance,
             FreeBalance: result.FreeBalance,
-            Balance: result.Balance);
+            OutstandingBalance: result.OutstandingBalance);
     }
 
     /// <summary>

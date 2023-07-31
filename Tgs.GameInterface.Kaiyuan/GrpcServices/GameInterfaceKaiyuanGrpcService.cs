@@ -199,9 +199,9 @@ public class GameInterfaceKaiyuanGrpcService : GameInterfaceKaiyuan.GameInterfac
 
         return new PlayerBalanceReply
         {
-            LockBalance = result.LockBalance,
+            Balance = result.Balance,
             FreeBalance = result.FreeBalance,
-            Balance = result.Balance
+            OutstandingBalance = result.OutstandingBalance,
         };
     }
 
