@@ -65,7 +65,7 @@ public class OrderStatusUnitTest
             .Expect(HttpMethod.Get, uriBuilder.ToString())
             .Respond(HttpStatusCode.OK, new StringContent(response.ToJsonString(), Encoding.UTF8, MediaTypeNames.Application.Json));
 
-        var fakeHttpClient = new HttpClient();// handler.ToHttpClient();
+        var fakeHttpClient = handler.ToHttpClient();
         var fakeLog = NullLogger<GameApiClient>.Instance;
 
         var client = new GameApiClient(
