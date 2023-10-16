@@ -192,8 +192,4 @@ internal class GameInterfaceKaiyuanClient : IGameInterfaceKaiyuanClient
             cancellationToken: cancellationToken)
             .ConfigureAwait(false);
     }
-
-    ValueTask<FundReply> IGameInterfaceKaiyuanClient.FundInAsync(Uri apiUrl, string deskey, string md5key, string agentId, string playerCode, string orderId, decimal amount, CancellationToken cancellationToken) => throw new NotImplementedException();
-
-    ValueTask<FundReply> IGameInterfaceKaiyuanClient.FundOutAsync(Uri apiUrl, string deskey, string md5key, string agentId, string playerCode, string orderId, decimal amount, CancellationToken cancellationToken) => throw new NotImplementedException();
 }
