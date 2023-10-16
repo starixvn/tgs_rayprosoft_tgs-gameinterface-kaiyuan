@@ -25,6 +25,7 @@ public class KaiyuanController : ControllerBase
     ///             "deskey": "E2F3A416006F84F8",
     ///             "mD5key": "B563DF2A3DE58DFB",
     ///             "agentId": "72412",
+    ///             "orderId": "72412202310060331234064ucmqplxb029",
     ///             "playerCode":"4ucmqplxb029",
     ///             "amount": 1
     ///         }
@@ -40,6 +41,7 @@ public class KaiyuanController : ControllerBase
             MD5key: source.MD5key,
             AgentId: source.AgentId,
             PlayerCode: source.PlayerCode,
+            OrderId: source.OrderId,
             Amount: source.Amount);
 
         return service
@@ -64,6 +66,7 @@ public class KaiyuanController : ControllerBase
     ///             "deskey": "E2F3A416006F84F8",
     ///             "mD5key": "B563DF2A3DE58DFB",
     ///             "agentId": "72412",
+    ///             "orderId": "72412202310060331279044ucmqplxb029",
     ///             "playerCode":"4ucmqplxb029",
     ///             "amount": 1
     ///         }
@@ -79,6 +82,7 @@ public class KaiyuanController : ControllerBase
             MD5key: source.MD5key,
             AgentId: source.AgentId,
             PlayerCode: source.PlayerCode,
+            OrderId: source.OrderId,
             Amount: source.Amount);
 
         return service
@@ -124,7 +128,7 @@ public class KaiyuanController : ControllerBase
     }
 
     /// <summary>
-    /// Games the record asynchronous.
+    /// Games the wager asynchronous.
     /// </summary>
     /// <param name="service">The service.</param>
     /// <param name="source">The source.</param>
@@ -143,12 +147,12 @@ public class KaiyuanController : ControllerBase
     ///             "endTime": "2023-07-26T12:00:00+08:00"
     ///         }
     /// </remarks>
-    [HttpPost("game/record")]
-    public async IAsyncEnumerable<GameRecordResultViewModel> GameRecordAsync(
-        [FromServices] IQueryService<GameRecordQuery, GameRecordResult> service,
-        GameRecordViewModel source)
+    [HttpPost("game/wager")]
+    public async IAsyncEnumerable<GameWagerResultViewModel> GameWagerAsync(
+        [FromServices] IQueryService<GameWagerQuery, GameWagerResult> service,
+        GameWagerViewModel source)
     {
-        var query = new GameRecordQuery(
+        var query = new GameWagerQuery(
             ApiUrl: source.ApiUrl,
             Deskey: source.Deskey,
             MD5key: source.MD5key,
@@ -163,7 +167,7 @@ public class KaiyuanController : ControllerBase
             .ToArrayAsync(
                 cancellationToken: HttpContext.RequestAborted)
             .ConfigureAwait(false)
-            ?? Enumerable.Empty<GameRecordResult>();
+            ?? Enumerable.Empty<GameWagerResult>();
 
         if (!results.Any())
         {
@@ -172,8 +176,8 @@ public class KaiyuanController : ControllerBase
 
         foreach (var result in results)
         {
-            yield return new GameRecordResultViewModel(
-                ExternalRoundId: result.ExternalRoundId,
+            yield return new GameWagerResultViewModel(
+                ExternalWagerId: result.ExternalWagerId,
                 ExternalGameId: result.ExternalGameId,
                 PlayerCode: result.PlayerCode,
                 ExternalCreatedOn: result.ExternalCreatedOn,
@@ -182,7 +186,6 @@ public class KaiyuanController : ControllerBase
                 ValidBet: result.ValidBet,
                 Settle: result.Settle,
                 Commission: result.Commission,
-                Turnover: result.Turnover,
                 WinLoss: result.WinLoss,
                 AdditionalData: result.AdditionalData);
         }
@@ -207,7 +210,7 @@ public class KaiyuanController : ControllerBase
     ///             "brandCode": "GPI",
     ///             "playerCode":"4ucmqplxb029",
     ///             "ipAddress": "127.0.0.1",
-    ///             "gameExternalID": "0"
+    ///             "externalGameId": "0"
     ///         }
     /// </remarks>
     [HttpPost("gameurl")]
@@ -223,7 +226,7 @@ public class KaiyuanController : ControllerBase
             BrandCode: source.BrandCode,
             PlayerCode: source.PlayerCode,
             IpAddress: source.IpAddress,
-            GameExternalID: source.GameExternalID);
+            ExternalGameId: source.ExternalGameId);
 
         return service
             .GetAsync(
@@ -309,5 +312,44 @@ public class KaiyuanController : ControllerBase
             .ExecuteAsync(
             command: command,
             cancellationToken: HttpContext.RequestAborted);
+    }
+
+    /// <summary>
+    /// Agents the balance asynchronous.
+    /// </summary>
+    /// <param name="service">The service.</param>
+    /// <param name="source">The source.</param>
+    /// <returns></returns>
+    /// <remarks>
+    /// <b>Example</b><br />
+    ///
+    ///     Post
+    ///
+    ///         {
+    ///             "apiUrl": "https://wc1-api.hddv1.com/",
+    ///             "deskey": "E2F3A416006F84F8",
+    ///             "mD5key": "B563DF2A3DE58DFB",
+    ///             "agentId": "72412"
+    ///         }
+    /// </remarks>
+    [HttpPost("agent/balance", Name = "AgentBalance")]
+    public async ValueTask<AgentBalanceResultViewModel> AgentBalanceAsync(
+        [FromServices] IGetService<AgentBalanceQuery, AgentBalanceResult> service,
+        AgentBalanceViewModel source)
+    {
+        var query = new AgentBalanceQuery(
+            ApiUrl: source.ApiUrl,
+            Deskey: source.Deskey,
+            MD5key: source.MD5key,
+            AgentId: source.AgentId);
+
+        var result = await service
+            .GetAsync(
+            query: query,
+            cancellationToken: HttpContext.RequestAborted)
+            .ConfigureAwait(false);
+
+        return new AgentBalanceResultViewModel(
+            Credit: result.Credit);
     }
 }

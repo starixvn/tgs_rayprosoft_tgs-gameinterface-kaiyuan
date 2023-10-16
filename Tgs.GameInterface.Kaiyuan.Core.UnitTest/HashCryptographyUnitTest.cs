@@ -25,8 +25,7 @@ public class HashCryptographyUnitTest
         var actual = await hashCryptography
             .GetAesEncryptAsync(
             data: data,
-            secretKey: secretKey)
-            .ConfigureAwait(false);
+            secretKey: secretKey);
 
         Assert.NotNull(actual);
         Assert.Equal("TVvTX3VbPPF8uoTUB9GG382q5wLB1kCJjq8gYecYEyc=", actual);
@@ -41,8 +40,7 @@ public class HashCryptographyUnitTest
         var actual = await hashCryptography
             .GetAesEncryptAsync(
             data: data,
-            secretKey: secretKey)
-            .ConfigureAwait(false);
+            secretKey: secretKey);
 
         Assert.NotNull(actual);
         Assert.Equal("ho4lHF9xbBKSBKSI47dt9MeLG54H1Gp7fhoksdXiGpleMvtAAFzHCFIFakM5X0PuRThHCQl215so3waG6y28qwyxTQU/BUCgrpXya23E4Bs=", actual);
@@ -57,8 +55,7 @@ public class HashCryptographyUnitTest
         var actual = await hashCryptography
             .GetAesEncryptAsync(
             data: data,
-            secretKey: secretKey)
-            .ConfigureAwait(false);
+            secretKey: secretKey);
 
         Assert.NotNull(actual);
         Assert.Equal("NnlQBQWvhxyimD+GgoNvmkhlBh/yO2eWHoZJ8WoZjOnOixnMbJEPPRaovuGwVNMS4WffbgEyu9pT4LniPlYkaRQ4dlrDtSCertOuxvQXVjY=", actual);
@@ -73,8 +70,7 @@ public class HashCryptographyUnitTest
         var actual = await hashCryptography
             .GetAesEncryptAsync(
             data: data,
-            secretKey: secretKey)
-            .ConfigureAwait(false);
+            secretKey: secretKey);
 
         Assert.NotNull(actual);
         Assert.Equal("AN/kR9Tl/hgbe5UMClo83jPXBmho0mIUfC6GszYjs2H0ivBWXSRAVMPHW6206xIKykfufyQrf55SqtNh32TsilT7ne+yxFaQuFLdaURgJ5Op0nsjfy9JyrM5VLFeUJMbM2xicRz+TSoPz1x8Y5myMw==", actual);
@@ -89,8 +85,7 @@ public class HashCryptographyUnitTest
         var actual = await hashCryptography
             .GetAesEncryptAsync(
             data: data,
-            secretKey: secretKey)
-            .ConfigureAwait(false);
+            secretKey: secretKey);
 
         Assert.NotNull(actual);
         Assert.Equal("H5kLMUYwNlqbCtfaD/H4q33IUwwYr7Owu3a3QJi9Jj1lCR48Wnkqm/Nl9Z3UEdXuVHZOgPcUHBwewVlMD0cssg==", actual);

@@ -23,6 +23,6 @@ public class GameUrlGetService : IGetService<GameUrlQuery, string>
             account: query.PlayerCode,
             ipAddress: query.IpAddress,
             lineCode: query.BrandCode,
-            gameExternalID: query.GameExternalID,
+            kindId: query.ExternalGameId,
             cancellationToken: cancellationToken);
 }

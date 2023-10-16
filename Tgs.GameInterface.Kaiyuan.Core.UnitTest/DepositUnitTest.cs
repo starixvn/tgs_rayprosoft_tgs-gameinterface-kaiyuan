@@ -19,6 +19,7 @@ public record DepositUnitTest
         var md5key = "B563DF2A3DE58DFB";
         var agentId = "72412";
         var account = "4ucmqplxb029";
+        var orderId = "72412202307260300148304ucmqplxb029";
         var money = 1.0m;
 
         var fakeCryptography = Substitute.For<IHashCryptography>();
@@ -81,10 +82,10 @@ public record DepositUnitTest
             md5key: md5key,
             agentId: agentId,
             account: account,
-            money: money)
-            .ConfigureAwait(false);
+            orderId: orderId,
+            money: money);
 
         Assert.NotNull(actual);
-        Assert.Equal("72412202307260300148304ucmqplxb029", actual);
+        Assert.Equal(response.ToJsonString(), actual.Resp);
     }
 }

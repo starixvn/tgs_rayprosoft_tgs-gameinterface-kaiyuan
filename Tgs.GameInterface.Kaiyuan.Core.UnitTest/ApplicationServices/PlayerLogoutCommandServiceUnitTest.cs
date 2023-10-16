@@ -22,8 +22,7 @@ public class PlayerLogoutCommandServiceUnitTest
 
         await service
             .ExecuteAsync(
-            command: command)
-            .ConfigureAwait(false);
+            command: command);
 
         _ = fakeClient
             .Received(1)

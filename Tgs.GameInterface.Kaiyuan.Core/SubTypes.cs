@@ -8,5 +8,6 @@ public enum SubTypes
     OrderStatus = 4,
     GameRecord = 6,
     Balance = 7,
-    Logout = 8
+    Logout = 8,
+    AgentBalance = 14
 }

@@ -21,7 +21,7 @@ public class LoginUnitTest
         var account = "4ucmqplxb029";
         var ipAddress = "127.0.0.1";
         var lineCode = "GPI";
-        var gameExternalID = "0";
+        var kindId = "0";
 
         var fakeCryptography = Substitute.For<IHashCryptography>();
         var fakeSystemClock = Substitute.For<ISystemClock>();
@@ -85,8 +85,7 @@ public class LoginUnitTest
             account: account,
             ipAddress: ipAddress,
             lineCode: lineCode,
-            gameExternalID: gameExternalID)
-            .ConfigureAwait(false);
+            kindId: kindId);
 
         Assert.NotNull(actual);
         Assert.Equal("https://wc1-g-h5.uaphl791.com/", actual);

@@ -5,12 +5,12 @@ using Tgs.GameInterface.Kaiyuan.Core.Models;
 
 namespace Tgs.GameInterface.Kaiyuan.Core.UnitTest.ApplicationServices;
 
-public class GameRecordQueryServiceUnitTest
+public class GameWagerQueryServiceUnitTest
 {
     [Fact]
     public async Task Player_Wins()
     {
-        var query = new GameRecordQuery(
+        var query = new GameWagerQuery(
             ApiUrl: new Uri("https://wc1-record.hddv1.com/"),
             Deskey: "E2F3A416006F84F8",
             MD5key: "B563DF2A3DE58DFB",
@@ -71,26 +71,24 @@ public class GameRecordQueryServiceUnitTest
             cancellationToken: Arg.Any<CancellationToken>())
             .Returns(infos.ToAsyncEnumerable());
 
-        var service = new GameRecordQueryService(
+        var service = new GameWagerQueryService(
             fakeClient);
 
         var actual = await service
             .QueryAsync(
             query: query)
             .ToArrayAsync()
-            .ConfigureAwait(false)
-            ?? Enumerable.Empty<GameRecordResult>();
+            ?? Enumerable.Empty<GameWagerResult>();
 
         Assert.NotNull(actual);
         Assert.True(actual.Any());
-        Assert.Equal(infos.First().GameID, actual.First().ExternalRoundId);
+        Assert.Equal(infos.First().GameID, actual.First().ExternalWagerId);
         Assert.Equal(infos.First().KindID.ToString(), actual.First().ExternalGameId);
         Assert.Equal(infos.First().Account, actual.First().PlayerCode);
         Assert.Equal(infos.First().AllBet, actual.First().Bet);
         Assert.Equal(infos.First().AllBet, actual.First().ValidBet);
         Assert.Equal(8.00m, actual.First().Settle);
         Assert.Equal(infos.First().Revenue, actual.First().Commission);
-        Assert.Equal(infos.First().CellScore, actual.First().Turnover);
         Assert.Equal(infos.First().Profit, actual.First().WinLoss);
         Assert.Equal(infos.First().GameStartTime, actual.First().ExternalCreatedOn);
         Assert.Equal(infos.First().GameEndTime, actual.First().ExternalClosedOn);
@@ -100,7 +98,7 @@ public class GameRecordQueryServiceUnitTest
     [Fact]
     public async Task Player_Loses()
     {
-        var query = new GameRecordQuery(
+        var query = new GameWagerQuery(
             ApiUrl: new Uri("https://wc1-record.hddv1.com/"),
             Deskey: "E2F3A416006F84F8",
             MD5key: "B563DF2A3DE58DFB",
@@ -161,26 +159,24 @@ public class GameRecordQueryServiceUnitTest
             cancellationToken: Arg.Any<CancellationToken>())
             .Returns(infos.ToAsyncEnumerable());
 
-        var service = new GameRecordQueryService(
+        var service = new GameWagerQueryService(
             fakeClient);
 
         var actual = await service
             .QueryAsync(
             query: query)
             .ToArrayAsync()
-            .ConfigureAwait(false)
-            ?? Enumerable.Empty<GameRecordResult>();
+            ?? Enumerable.Empty<GameWagerResult>();
 
         Assert.NotNull(actual);
         Assert.True(actual.Any());
-        Assert.Equal(infos.First().GameID, actual.First().ExternalRoundId);
+        Assert.Equal(infos.First().GameID, actual.First().ExternalWagerId);
         Assert.Equal(infos.First().KindID.ToString(), actual.First().ExternalGameId);
         Assert.Equal(infos.First().Account, actual.First().PlayerCode);
         Assert.Equal(infos.First().AllBet, actual.First().Bet);
         Assert.Equal(infos.First().AllBet, actual.First().ValidBet);
         Assert.Equal(0, actual.First().Settle);
         Assert.Equal(infos.First().Revenue, actual.First().Commission);
-        Assert.Equal(infos.First().CellScore, actual.First().Turnover);
         Assert.Equal(infos.First().Profit, actual.First().WinLoss);
         Assert.Equal(infos.First().GameStartTime, actual.First().ExternalCreatedOn);
         Assert.Equal(infos.First().GameEndTime, actual.First().ExternalClosedOn);
@@ -190,7 +186,7 @@ public class GameRecordQueryServiceUnitTest
     [Fact]
     public async Task Player_Versus_Banker_Versus_Player()
     {
-        var query = new GameRecordQuery(
+        var query = new GameWagerQuery(
             ApiUrl: new Uri("https://wc1-record.hddv1.com/"),
             Deskey: "E2F3A416006F84F8",
             MD5key: "B563DF2A3DE58DFB",
@@ -251,26 +247,24 @@ public class GameRecordQueryServiceUnitTest
             cancellationToken: Arg.Any<CancellationToken>())
             .Returns(infos.ToAsyncEnumerable());
 
-        var service = new GameRecordQueryService(
+        var service = new GameWagerQueryService(
             fakeClient);
 
         var actual = await service
             .QueryAsync(
             query: query)
             .ToArrayAsync()
-            .ConfigureAwait(false)
-            ?? Enumerable.Empty<GameRecordResult>();
+            ?? Enumerable.Empty<GameWagerResult>();
 
         Assert.NotNull(actual);
         Assert.True(actual.Any());
-        Assert.Equal(infos.First().GameID, actual.First().ExternalRoundId);
+        Assert.Equal(infos.First().GameID, actual.First().ExternalWagerId);
         Assert.Equal(infos.First().KindID.ToString(), actual.First().ExternalGameId);
         Assert.Equal(infos.First().Account, actual.First().PlayerCode);
         Assert.Equal(infos.First().AllBet, actual.First().Bet);
         Assert.Equal(infos.First().CellScore, actual.First().ValidBet);
         Assert.Equal(7.80m, actual.First().Settle);
         Assert.Equal(infos.First().Revenue, actual.First().Commission);
-        Assert.Equal(infos.First().CellScore, actual.First().Turnover);
         Assert.Equal(infos.First().Profit, actual.First().WinLoss);
         Assert.Equal(infos.First().GameStartTime, actual.First().ExternalCreatedOn);
         Assert.Equal(infos.First().GameEndTime, actual.First().ExternalClosedOn);
@@ -280,7 +274,7 @@ public class GameRecordQueryServiceUnitTest
     [Fact]
     public async Task Player_Versus_Banker_Versus_Player_Versus_Tie()
     {
-        var query = new GameRecordQuery(
+        var query = new GameWagerQuery(
             ApiUrl: new Uri("https://wc1-record.hddv1.com/"),
             Deskey: "E2F3A416006F84F8",
             MD5key: "B563DF2A3DE58DFB",
@@ -341,26 +335,24 @@ public class GameRecordQueryServiceUnitTest
             cancellationToken: Arg.Any<CancellationToken>())
             .Returns(infos.ToAsyncEnumerable());
 
-        var service = new GameRecordQueryService(
+        var service = new GameWagerQueryService(
             fakeClient);
 
         var actual = await service
             .QueryAsync(
             query: query)
             .ToArrayAsync()
-            .ConfigureAwait(false)
-            ?? Enumerable.Empty<GameRecordResult>();
+            ?? Enumerable.Empty<GameWagerResult>();
 
         Assert.NotNull(actual);
         Assert.True(actual.Any());
-        Assert.Equal(infos.First().GameID, actual.First().ExternalRoundId);
+        Assert.Equal(infos.First().GameID, actual.First().ExternalWagerId);
         Assert.Equal(infos.First().KindID.ToString(), actual.First().ExternalGameId);
         Assert.Equal(infos.First().Account, actual.First().PlayerCode);
         Assert.Equal(infos.First().AllBet, actual.First().Bet);
         Assert.Equal(infos.First().CellScore, actual.First().ValidBet);
         Assert.Equal(4m, actual.First().Settle);
         Assert.Equal(infos.First().Revenue, actual.First().Commission);
-        Assert.Equal(infos.First().CellScore, actual.First().Turnover);
         Assert.Equal(infos.First().Profit, actual.First().WinLoss);
         Assert.Equal(infos.First().GameStartTime, actual.First().ExternalCreatedOn);
         Assert.Equal(infos.First().GameEndTime, actual.First().ExternalClosedOn);

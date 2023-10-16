@@ -1,5 +1,6 @@
 ﻿using NSubstitute;
 using Tgs.GameInterface.Kaiyuan.Core.ApplicationServices;
+using Tgs.GameInterface.Kaiyuan.Core.Models;
 
 namespace Tgs.GameInterface.Kaiyuan.Core.UnitTest.ApplicationServices;
 
@@ -14,27 +15,29 @@ public class FundInGetServiceUnitTest
             MD5key: "B563DF2A3DE58DFB",
             AgentId: "72412",
             PlayerCode: "4ucmqplxb029",
+            OrderId: "72412202310060331234064ucmqplxb029",
             Amount: 1.0m);
 
         var fakeClient = Substitute.For<IGameApiClient>();
 
-        var service = new FundInGetService(
-            fakeClient);
-
-        _ = await service
-            .GetAsync(
-            query: query)
-            .ConfigureAwait(false);
-
         _ = fakeClient
-            .Received(1)
-            .WithdrawalAsync(
+            .WithdrawAsync(
             Arg.Is(query.ApiUrl),
             Arg.Is(query.Deskey),
             Arg.Is(query.MD5key),
             Arg.Is(query.AgentId),
             Arg.Is(query.PlayerCode),
+            Arg.Is(query.OrderId),
             Arg.Is(query.Amount),
-            Arg.Any<CancellationToken>());
+            Arg.Any<CancellationToken>())
+            .Returns(new ValueTask<WithdrawResp>(
+                new WithdrawResp(Resp: "{\"m\":\"/channelHandle\",\"s\":103,\"d\":{\"code\":0,\"money\":\"0.00\"}}")));
+
+        var service = new FundInGetService(
+            fakeClient);
+
+        var actual = await service.GetAsync(query: query);
+
+        Assert.Equal("{\"m\":\"/channelHandle\",\"s\":103,\"d\":{\"code\":0,\"money\":\"0.00\"}}", actual.Resp);
     }
 }

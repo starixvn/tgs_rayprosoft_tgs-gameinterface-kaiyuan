@@ -22,8 +22,7 @@ public class FundStatusGetServiceUnitTest
 
         _ = await service
             .GetAsync(
-            query: query)
-            .ConfigureAwait(false);
+            query: query);
 
         _ = fakeClient
             .Received(1)

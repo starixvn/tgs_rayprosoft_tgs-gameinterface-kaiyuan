@@ -83,8 +83,7 @@ public class BalanceUnitTest
             deskey: deskey,
             md5key: md5key,
             agentId: agentId,
-            account: account)
-            .ConfigureAwait(false);
+            account: account);
 
         Assert.NotNull(actual);
         Assert.Equal(1m, actual.FreeMoney);
