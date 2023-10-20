@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Web;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 using NSubstitute;
 using RichardSzalay.MockHttp;
 
@@ -14,6 +15,14 @@ public class LoginUnitTest
     [Fact]
     public async void Normal_Process()
     {
+        var policySettingsOptions = Options.Create(new PolicySettingsOptions
+        {
+            DepositRetryCount = 1,
+            DepositRetryWaitSec = 1,
+            GameRecordRetryCount = 1,
+            GameRecordRetryWaitSec = 1
+        });
+
         var apiUrl = new Uri("https://wc1-api.hddv1.com/");
         var deskey = "E2F3A416006F84F8";
         var md5key = "B563DF2A3DE58DFB";
@@ -72,6 +81,7 @@ public class LoginUnitTest
 
         var client = new GameApiClient(
             fakeLog,
+            policySettingsOptions,
             fakeCryptography,
             fakeSystemClock,
             fakeHttpClient);
