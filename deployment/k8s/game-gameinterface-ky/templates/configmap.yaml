@@ -28,11 +28,11 @@ data:
           }
         }
       },
-      "policySettingsOptions": {
-        "depositRetryCount": 1,
-        "depositRetryWaitSec": 5,
-        "gameRecordRetryCount": 1,
-        "gameRecordRetryWaitSec": 12
+      "PolicySettings": {
+        "DepositRetryCount": 1,
+        "DepositRetryWaitSec": 5,
+        "GameRecordRetryCount": 1,
+        "GameRecordRetryWaitSec": 12
       }
     }
   otel-collector-config.yaml: |
