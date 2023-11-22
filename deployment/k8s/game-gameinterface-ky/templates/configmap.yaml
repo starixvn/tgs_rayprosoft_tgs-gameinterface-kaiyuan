@@ -7,27 +7,33 @@ metadata:
 data:
   appsettings.json: |
     {
-        "Logging": {
-          "LogLevel": {
-            "Default": "Warning",
-            "Microsoft.AspNetCore": "Warning",
-            "Tgs.GameInterface.Kaiyuan.Core": "Information"
-          }
+      "Logging": {
+        "LogLevel": {
+          "Default": "Warning",
+          "Microsoft.AspNetCore": "Warning",
+          "Tgs.GameInterface.Kaiyuan.Core": "Information"
+        }
+      },
+      "Kestrel": {
+        "EndpointDefaults": {
+          "Protocols": "Http2"
         },
-        "Kestrel": {
-          "EndpointDefaults": {
-                "Protocols": "Http2"
+        "Endpoints": {
+          "HealthCheck": {
+            "Url": "http://*:{{ .Values.service.port }}",
+            "Protocols": "Http1"
           },
-          "Endpoints": {
-            "HealthCheck": {
-                "Url": "http://*:{{ .Values.service.port }}",
-                "Protocols": "Http1"
-            },
-            "Grpc": {
-                "Url": "http://*:{{ .Values.servicegrpc.port }}"
-            }
+          "Grpc": {
+            "Url": "http://*:{{ .Values.servicegrpc.port }}"
           }
         }
+      },
+      "policySettingsOptions": {
+        "depositRetryCount": 1,
+        "depositRetryWaitSec": 5,
+        "gameRecordRetryCount": 1,
+        "gameRecordRetryWaitSec": 12
+      }
     }
   otel-collector-config.yaml: |
     receivers:
