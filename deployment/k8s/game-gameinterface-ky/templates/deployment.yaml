@@ -41,7 +41,7 @@ spec:
                 fieldRef:
                   fieldPath: status.hostIP
           volumeMounts:
-           - mountPath: /app/appsettings.Production.json
+            - mountPath: /app/appsettings.Production.json
               name: appsettings
               readOnly: true
               subPath: appsettings.json
