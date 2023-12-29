@@ -10,16 +10,17 @@ namespace Tgs.GameInterface.Kaiyuan.Controllers;
 
 [Route("[controller]")]
 [ApiController]
-public class InfoController : ControllerBase
+public class InfoController(
+    IConfiguration configuration,
+    IOptions<PolicySettingsOptions> options) : ControllerBase
 {
-    private readonly PolicySettingsOptions _policySettingsOptions;
+    private readonly PolicySettingsOptions _policySettingsOptions = options.Value;
 
-    public InfoController(
-        IOptions<PolicySettingsOptions> options)
-    {
-        _policySettingsOptions = options.Value;
-    }
-
+    /// <summary>
+    /// Gets the asynchronous.
+    /// </summary>
+    /// <param name="_hostingEnvironment">The hosting environment.</param>
+    /// <returns></returns>
     [HttpGet]
     public async Task<object> GetAsync([FromServices] IWebHostEnvironment _hostingEnvironment)
     {
@@ -37,6 +38,8 @@ public class InfoController : ControllerBase
             OsVersion = $"{Environment.OSVersion}",
             Version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(),
             ProcessCount = Environment.ProcessorCount,
+            ReleaseNamespace = configuration.GetValue<string>("RELEASE_NAMESPACE"),
+            PodIPAddress = configuration.GetValue<string>("POD_IP"),
             PolicySettingsOptions = _policySettingsOptions
         };
     }

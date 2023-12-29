@@ -19,12 +19,13 @@ data:
           "Protocols": "Http2"
         },
         "Endpoints": {
-          "HealthCheck": {
-            "Url": "http://*:{{ .Values.service.port }}",
+          "Http": {
+            "Url": "http://*:{{ .Values.service.targetPort }}",
             "Protocols": "Http1"
           },
           "Grpc": {
-            "Url": "http://*:{{ .Values.servicegrpc.port }}"
+            "Url": "http://*:{{ .Values.service.grpc.targetPort }}",
+            "Protocols": "Http2"
           }
         }
       },
@@ -32,7 +33,7 @@ data:
         "DepositRetryCount": 1,
         "DepositRetryWaitSec": 5,
         "GameRecordRetryCount": 1,
-        "GameRecordRetryWaitSec": 12
+        "GameRecordRetryWaitSec": 11
       }
     }
   otel-collector-config.yaml: |
