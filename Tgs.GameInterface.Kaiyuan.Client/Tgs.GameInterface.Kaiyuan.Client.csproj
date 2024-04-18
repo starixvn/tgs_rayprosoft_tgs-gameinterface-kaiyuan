@@ -29,4 +29,10 @@
 		<PackageReference Include="PhoenixToolkits.Protobuf.ExtendTypes" Version="0.0.7" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Protobuf Include="..\Tgs.GameInterface.Kaiyuan\Protos\GameInterfaceKaiyuan.proto">
+	    <Link>GameInterfaceKaiyuan.proto</Link>
+	  </Protobuf>
+	</ItemGroup>
+
 </Project>
