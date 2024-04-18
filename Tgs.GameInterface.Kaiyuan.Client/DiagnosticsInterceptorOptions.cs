@@ -4,6 +4,6 @@ namespace Tgs.GameInterface.Kaiyuan.Client;
 
 public class DiagnosticsInterceptorOptions
 {
-    public ActivitySource InterceptorActivitySource { get; set; } =
-        new ActivitySource($"Tgs.GameInterface.Kaiyuan.Client.DiagnosticsInterceptor");
+	public ActivitySource InterceptorActivitySource { get; set; } =
+		new ActivitySource($"Tgs.GameInterface.Kaiyuan.Client.DiagnosticsInterceptor");
 }

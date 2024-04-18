@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>1.0.9</Version>
+		<Version>1.0.10</Version>
 		<Authors>Raypro</Authors>
 		<PackageProjectUrl>https://gitlab.com/rayprosoft/tgs-gameinterface-kaiyuan</PackageProjectUrl>
 		<RepositoryUrl>https://gitlab.com/rayprosoft/tgs-gameinterface-kaiyuan.git</RepositoryUrl>
@@ -30,7 +30,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="..\Tgs.GameInterface.Kaiyuan\Protos\gameinterfacekaiyuan.proto" Link="gameinterfacekaiyuan.proto" />
+	  <Protobuf Include="..\Tgs.GameInterface.Kaiyuan\Protos\GameInterfaceKaiyuan.proto">
+	    <Link>GameInterfaceKaiyuan.proto</Link>
+	  </Protobuf>
 	</ItemGroup>
 
 </Project>

@@ -41,7 +41,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Protos\gameinterfacekaiyuan.proto" />
+		<Protobuf Include="Protos\GameInterfaceKaiyuan.proto" />
 	</ItemGroup>
 
 </Project>

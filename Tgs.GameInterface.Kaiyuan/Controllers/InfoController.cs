@@ -11,36 +11,36 @@ namespace Tgs.GameInterface.Kaiyuan.Controllers;
 [Route("[controller]")]
 [ApiController]
 public class InfoController(
-    IConfiguration configuration,
-    IOptions<PolicySettingsOptions> options) : ControllerBase
+	IConfiguration configuration,
+	IOptions<PolicySettingsOptions> options) : ControllerBase
 {
-    private readonly PolicySettingsOptions _policySettingsOptions = options.Value;
+	private readonly PolicySettingsOptions _policySettingsOptions = options.Value;
 
-    /// <summary>
-    /// Gets the asynchronous.
-    /// </summary>
-    /// <param name="_hostingEnvironment">The hosting environment.</param>
-    /// <returns></returns>
-    [HttpGet]
-    public async Task<object> GetAsync([FromServices] IWebHostEnvironment _hostingEnvironment)
-    {
-        var hostName = Dns.GetHostName();
-        var hostEntry = await Dns.GetHostEntryAsync(hostName).ConfigureAwait(false);
-        var hostIp = Array.Find(hostEntry.AddressList,
-            x => x.AddressFamily == AddressFamily.InterNetwork);
+	/// <summary>
+	/// Gets the asynchronous.
+	/// </summary>
+	/// <param name="_hostingEnvironment">The hosting environment.</param>
+	/// <returns></returns>
+	[HttpGet]
+	public async Task<object> GetAsync([FromServices] IWebHostEnvironment _hostingEnvironment)
+	{
+		var hostName = Dns.GetHostName();
+		var hostEntry = await Dns.GetHostEntryAsync(hostName).ConfigureAwait(false);
+		var hostIp = Array.Find(hostEntry.AddressList,
+			x => x.AddressFamily == AddressFamily.InterNetwork);
 
-        return new
-        {
-            Environment.MachineName,
-            HostName = hostName,
-            HostIp = hostIp?.ToString() ?? string.Empty,
-            Environment = _hostingEnvironment.EnvironmentName,
-            OsVersion = $"{Environment.OSVersion}",
-            Version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(),
-            ProcessCount = Environment.ProcessorCount,
-            ReleaseNamespace = configuration.GetValue<string>("RELEASE_NAMESPACE"),
-            PodIPAddress = configuration.GetValue<string>("POD_IP"),
-            PolicySettingsOptions = _policySettingsOptions
-        };
-    }
+		return new
+		{
+			Environment.MachineName,
+			HostName = hostName,
+			HostIp = hostIp?.ToString() ?? string.Empty,
+			Environment = _hostingEnvironment.EnvironmentName,
+			OsVersion = $"{Environment.OSVersion}",
+			Version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(),
+			ProcessCount = Environment.ProcessorCount,
+			ReleaseNamespace = configuration.GetValue<string>("RELEASE_NAMESPACE"),
+			PodIPAddress = configuration.GetValue<string>("POD_IP"),
+			PolicySettingsOptions = _policySettingsOptions
+		};
+	}
 }

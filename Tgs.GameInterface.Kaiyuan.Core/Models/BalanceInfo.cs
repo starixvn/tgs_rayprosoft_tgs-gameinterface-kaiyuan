@@ -1,5 +1,6 @@
 ﻿namespace Tgs.GameInterface.Kaiyuan.Core.Models;
 
 public record BalanceInfo(
-    decimal TotalMoney,
-    decimal FreeMoney);
+	bool IsPlayerExist,
+	decimal TotalMoney,
+	decimal FreeMoney);

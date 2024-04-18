@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Web;
@@ -55,11 +56,18 @@ internal class GameApiClient(
 			.ConfigureAwait(false);
 
 		var dataResponse = jsonNode["d"]!;
+
 		return dataResponse["code"]!.GetValue<int>() != 0
-			? throw new ReturnCodeException(dataResponse["code"]!.GetValue<int>())
+			? dataResponse["code"]!.GetValue<int>() != 16
+				? throw new ReturnCodeException(dataResponse["code"]!.GetValue<int>())
+				: new BalanceInfo(
+					IsPlayerExist: false,
+					TotalMoney: 0.0m,
+					FreeMoney: 0.0m)
 			: new BalanceInfo(
-			dataResponse["totalMoney"]!.GetValue<decimal>(),
-			dataResponse["freeMoney"]!.GetValue<decimal>());
+				IsPlayerExist: true,
+				dataResponse["totalMoney"]!.GetValue<decimal>(),
+				dataResponse["freeMoney"]!.GetValue<decimal>());
 	}
 
 	public async ValueTask<DepositResp> DepositAsync(Uri apiUrl, string deskey, string md5key, string agentId, string account, string orderId, decimal money, CancellationToken cancellationToken = default)
