@@ -12,6 +12,7 @@ service GameInterfaceKaiyuan {
   // Sends a greeting
   rpc PlayerBalance (PlayerBalanceRequest) returns (PlayerBalanceReply);
   rpc PlayerLogout (PlayerLogoutRequest) returns (BaseReply);
+  rpc PlayerOnline (PlayerOnlineRequest) returns (PlayerOnlineReply);
   rpc FundIn (FundRequest) returns (FundReply);
   rpc FundOut (FundRequest) returns (FundReply);
   rpc FundStatus(FundStatusRequest) returns (BaseReply);
@@ -35,6 +36,14 @@ message AgentBalanceRequest {
 	string deskey = 2;
 	string m_d5key = 3;
 	string agent_id = 4;
+}
+
+message PlayerOnlineRequest {
+	string api_url = 1;
+	string deskey = 2;
+	string m_d5key = 3;
+	string agent_id = 4;
+	string player_code = 5;
 }
 
 message PlayerLogoutRequest {
@@ -98,6 +107,11 @@ message PlayerBalanceReply {
 	phoenix.protobuf.DecimalValue free_balance = 3;
 	phoenix.protobuf.DecimalValue outstanding_balance = 4;
 }
+
+message PlayerOnlineReply {
+	bool online  = 1;
+}
+
 
 message AgentBalanceReply {
 	phoenix.protobuf.DecimalValue credit = 1;

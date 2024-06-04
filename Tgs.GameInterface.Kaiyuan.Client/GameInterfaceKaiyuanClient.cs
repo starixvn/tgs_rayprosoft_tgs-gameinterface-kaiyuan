@@ -186,4 +186,24 @@ internal class GameInterfaceKaiyuanClient(
 			cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
 	}
+
+	public async ValueTask<bool> PlayerOnlineAsync(Uri apiUrl, string deskey, string md5key, string agentId, string playerCode, CancellationToken cancellationToken = default)
+	{
+		var request = new PlayerOnlineRequest
+		{
+			ApiUrl = apiUrl.ToString(),
+			Deskey = deskey,
+			MD5Key = md5key,
+			AgentId = agentId,
+			PlayerCode = playerCode
+		};
+
+		var reply = await client.PlayerOnlineAsync(
+			request: request,
+			cancellationToken: cancellationToken)
+			.ConfigureAwait(false);
+
+		return reply.Online;
+
+	}
 }

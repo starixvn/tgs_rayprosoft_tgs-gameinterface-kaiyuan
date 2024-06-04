@@ -15,6 +15,7 @@ public class GameInterfaceKaiyuanGrpcService(
 	IGetService<GameUrlQuery, string> gameUrlService,
 	IGetService<PlayerBalanceQuery, PlayerBalanceResult> playerBalanceService,
 	ICommandService<PlayerLogoutCommand> PlayerLogoutService,
+	IGetService<PlayerOnlineQuery, bool> playerOnlineService,
 	IGetService<AgentBalanceQuery, AgentBalanceResult> agentBalanceService) : GameInterfaceKaiyuan.GameInterfaceKaiyuanBase
 {
 	public override Task<CheckingServiceReply> CheckingService(CheckingServiceRequest request, ServerCallContext context)
@@ -225,6 +226,26 @@ public class GameInterfaceKaiyuanGrpcService(
 		return new AgentBalanceReply
 		{
 			Credit = result.Credit
+		};
+	}
+
+	public override async Task<PlayerOnlineReply> PlayerOnline(PlayerOnlineRequest request, ServerCallContext context)
+	{
+		var query = new PlayerOnlineQuery(
+			ApiUrl: new(request.ApiUrl),
+			Deskey: request.Deskey,
+			MD5key: request.MD5Key,
+			AgentId: request.AgentId,
+			PlayerCode: request.PlayerCode);
+
+		var online = await playerOnlineService.GetAsync(
+			query: query,
+			cancellationToken: context.CancellationToken)
+			.ConfigureAwait(false);
+
+		return new PlayerOnlineReply
+		{
+			Online = online
 		};
 	}
 }

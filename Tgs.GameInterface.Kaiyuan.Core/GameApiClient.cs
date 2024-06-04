@@ -144,6 +144,28 @@ internal class GameApiClient(
 		}
 	}
 
+	public async ValueTask<bool> OnlineStatusAsync(Uri apiUrl, string deskey, string md5key, string agentId, string account, CancellationToken cancellationToken = default)
+	{
+		var subTypes = SubTypes.Online;
+		var data = $"s={(int)subTypes}&account={account}";
+		var jsonNode = await GetAsync(
+			apiUrl: apiUrl,
+			types: subTypes,
+			deskey: deskey,
+			md5key: md5key,
+			agentId: agentId,
+			data: data,
+			cancellationToken: cancellationToken)
+			.ConfigureAwait(false);
+
+		var dataResponse = jsonNode["d"]!;
+		return dataResponse["code"]!.GetValue<int>() != 0
+			? dataResponse["code"]!.GetValue<int>() != 16
+				? throw new ReturnCodeException(dataResponse["code"]!.GetValue<int>())
+				: false
+			: dataResponse["status"]!.GetValue<int>() == 1;
+	}
+
 	public async ValueTask<bool> OrderStatusAsync(Uri apiUrl, string deskey, string md5key, string agentId, string orderId, CancellationToken cancellationToken = default)
 
 	{
