@@ -6,6 +6,7 @@ public enum SubTypes
 	Deposit = 2,
 	Withdrawal = 3,
 	OrderStatus = 4,
+	Online = 5,
 	GameRecord = 6,
 	Balance = 7,
 	Logout = 8,

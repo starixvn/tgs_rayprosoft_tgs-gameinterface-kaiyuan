@@ -316,6 +316,31 @@ public class KaiyuanController : ControllerBase
 	}
 
 	/// <summary>
+	/// Players the online.
+	/// </summary>
+	/// <param name="service">The service.</param>
+	/// <param name="query">The query.</param>
+	/// <returns></returns>
+	/// <remarks>
+	/// <b>Example</b><br />
+	///
+	///     Post
+	///
+	///         {
+	///             "apiUrl": "https://wc1-api.hddv1.com/",
+	///             "deskey": "E2F3A416006F84F8",
+	///             "mD5key": "B563DF2A3DE58DFB",
+	///             "agentId": "72412",
+	///             "playerCode":"4ucmqplxb029"
+	///         }
+	/// </remarks>
+	[HttpPost("player/online", Name = "PlayerOnline")]
+	public ValueTask<bool> PlayerOnline(
+		[FromServices] IGetService<PlayerOnlineQuery, bool> service,
+		[FromBody] PlayerOnlineQuery query)
+		=> service.GetAsync(query);
+
+	/// <summary>
 	/// Agents the balance asynchronous.
 	/// </summary>
 	/// <param name="service">The service.</param>
