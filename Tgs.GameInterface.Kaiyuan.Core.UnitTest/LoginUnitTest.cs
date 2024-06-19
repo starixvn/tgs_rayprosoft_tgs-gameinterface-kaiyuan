@@ -13,7 +13,7 @@ namespace Tgs.GameInterface.Kaiyuan.Core.UnitTest;
 public class LoginUnitTest
 {
 	[Fact]
-	public async void Normal_Process()
+	public async Task Normal_Process()
 	{
 		var policySettingsOptions = Options.Create(new PolicySettingsOptions
 		{

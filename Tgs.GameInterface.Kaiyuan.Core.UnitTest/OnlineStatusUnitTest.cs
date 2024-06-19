@@ -16,7 +16,7 @@ namespace Tgs.GameInterface.Kaiyuan.Core.UnitTest;
 public class OnlineStatusUnitTest
 {
 	[Fact]
-	public async void Normal_Process()
+	public async Task Normal_Process()
 	{
 		var policySettingsOptions = Options.Create(new PolicySettingsOptions
 		{
@@ -97,7 +97,7 @@ public class OnlineStatusUnitTest
 	}
 
 	[Fact]
-	public async void Data_non_existence()
+	public async Task Data_non_existence()
 	{
 		var policySettingsOptions = Options.Create(new PolicySettingsOptions
 		{
