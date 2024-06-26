@@ -204,6 +204,5 @@ internal class GameInterfaceKaiyuanClient(
 			.ConfigureAwait(false);
 
 		return reply.Online;
-
 	}
 }

@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>1.0.12</Version>
+		<Version>1.0.13</Version>
 		<Authors>Raypro</Authors>
 		<PackageProjectUrl>https://gitlab.com/rayprosoft/tgs-gameinterface-kaiyuan</PackageProjectUrl>
 		<RepositoryUrl>https://gitlab.com/rayprosoft/tgs-gameinterface-kaiyuan.git</RepositoryUrl>
@@ -26,13 +26,17 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="PhoenixToolkits.NuGet.BuildTools" Version="0.0.3">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="PhoenixToolkits.Protobuf.ExtendTypes" Version="0.0.7" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Protobuf Include="..\Tgs.GameInterface.Kaiyuan\Protos\GameInterfaceKaiyuan.proto">
-	    <Link>GameInterfaceKaiyuan.proto</Link>
-	  </Protobuf>
+	  <ProjectReference Include="..\Tgs.GameInterface.Kaiyuan.Protos\Tgs.GameInterface.Kaiyuan.Protos.csproj">
+	    <PrivateAssets>all</PrivateAssets>
+	  </ProjectReference>
 	</ItemGroup>
 
 </Project>
