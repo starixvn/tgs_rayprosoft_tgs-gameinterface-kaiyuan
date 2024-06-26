@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.GameInterface.Kaiyuan.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.GameInterface.Kaiyuan.Core.UnitTest", "Tgs.GameInterface.Kaiyuan.Core.UnitTest\Tgs.GameInterface.Kaiyuan.Core.UnitTest.csproj", "{747106C7-0FED-4F0F-80A2-10443EC4FC30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.GameInterface.Kaiyuan.Client", "Tgs.GameInterface.Kaiyuan.Client\Tgs.GameInterface.Kaiyuan.Client.csproj", "{C1845E7B-F521-4D23-BEEB-691FB7690610}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.GameInterface.Kaiyuan.Client", "Tgs.GameInterface.Kaiyuan.Client\Tgs.GameInterface.Kaiyuan.Client.csproj", "{C1845E7B-F521-4D23-BEEB-691FB7690610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.GameInterface.Kaiyuan.Protos", "Tgs.GameInterface.Kaiyuan.Protos\Tgs.GameInterface.Kaiyuan.Protos.csproj", "{5A1F250C-A2D5-42F6-B2CB-6EC92D8E273F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C1845E7B-F521-4D23-BEEB-691FB7690610}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1845E7B-F521-4D23-BEEB-691FB7690610}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1845E7B-F521-4D23-BEEB-691FB7690610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1F250C-A2D5-42F6-B2CB-6EC92D8E273F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1F250C-A2D5-42F6-B2CB-6EC92D8E273F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1F250C-A2D5-42F6-B2CB-6EC92D8E273F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1F250C-A2D5-42F6-B2CB-6EC92D8E273F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
